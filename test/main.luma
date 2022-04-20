@@ -1,0 +1,7 @@
+fun main()
+{
+    call sysout("Test");
+};
+
+// Entry point
+call main();

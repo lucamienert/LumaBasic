@@ -1,0 +1,10 @@
+func readFile(filePath)
+{
+    var content = fread(filePath);
+    return content;
+}
+
+func main()
+{
+    return;
+};

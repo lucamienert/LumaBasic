@@ -1,0 +1,9 @@
+include "functions.luma";
+
+func main()
+{
+    myFunction();
+    return;
+};
+
+main();

@@ -1,0 +1,10 @@
+func main()
+{
+    var additioned = 1 + 2;
+    var str = toString(additioned);
+    sysout(str);
+    return;
+};
+
+# Should print 3
+main();

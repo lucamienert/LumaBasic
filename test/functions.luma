@@ -1,0 +1,28 @@
+func myFunction()
+{
+    sysout("Test from function");
+    return;
+};
+
+func myFunctionWithParameter(x)
+{
+    sysout(x);
+    return;
+};
+
+func myFunctionWithParameters(y, z)
+{
+    sysout(y);
+    sysout(z);
+    return;
+};
+
+func main()
+{
+    myFunction();
+    myFunctionWithParameter("10");
+    myFunctionWithParameters("20", "30");
+    return;
+};
+
+main();

@@ -7,7 +7,7 @@ typedef struct TOKEN_STRUCT
 {
     enum
     {
-
+        TOKEN_ARROW
     } type;
 
     char *value;

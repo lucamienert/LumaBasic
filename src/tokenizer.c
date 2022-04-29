@@ -87,3 +87,9 @@ token_t *get_next_token(tokenizer_t *tokenizer)
         }
     }
 }
+
+void free_tokenizer(tokenizer_t *tokenizer)
+{
+    free(tokenizer->source);
+    free(tokenizer);
+}

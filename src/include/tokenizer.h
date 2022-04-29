@@ -11,5 +11,6 @@ typedef struct TOKENIZER_STRUCT
 } tokenizer_t;
 
 tokenizer_t *init_tokenizer(char *source);
+void free_tokenizer(tokenizer_t *tokenizer);
 
 #endif

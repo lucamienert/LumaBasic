@@ -7,3 +7,9 @@ token_t *init_token(char *value, int type)
     token->value = value;
     return token;
 }
+
+void free_token(token_t *token)
+{
+    free(token->value);
+    free(token);
+}

@@ -3,6 +3,8 @@
 
 #pragma once
 
+#include <stdlib.h>
+
 typedef struct TOKEN_STRUCT
 {
     enum
@@ -14,5 +16,6 @@ typedef struct TOKEN_STRUCT
 } token_t;
 
 token_t *init_token(char *value, int type);
+void free_token(token *token);
 
 #endif

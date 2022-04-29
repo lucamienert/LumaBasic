@@ -1,10 +1,11 @@
-func readFile(filePath)
+func readFile(string filePath) => string
 {
-    var content = fread(filePath);
+    string content = fread(filePath);
     return content;
 }
 
-func main()
+func main() => int
 {
-    return;
+    sysout(readFile("test.txt"));
+    return 0;
 };

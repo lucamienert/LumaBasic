@@ -1,9 +1,7 @@
 include "functions.luma";
 
-func main()
+func main() => int
 {
     myFunction();
-    return;
+    return 0;
 };
-
-main();

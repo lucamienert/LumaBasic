@@ -1,28 +1,23 @@
-func myFunction()
+func myFunction() => none
 {
     sysout("Test from function");
-    return;
 };
 
-func myFunctionWithParameter(x)
+func myFunctionWithParameter(int x) => none
 {
     sysout(x);
-    return;
 };
 
-func myFunctionWithParameters(y, z)
+func myFunctionWithParameters(string y, string z) => none
 {
     sysout(y);
     sysout(z);
-    return;
 };
 
-func main()
+func main() => int
 {
     myFunction();
-    myFunctionWithParameter("10");
+    myFunctionWithParameter(10);
     myFunctionWithParameters("20", "30");
-    return;
+    return 0;
 };
-
-main();

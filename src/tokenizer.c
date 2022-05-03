@@ -84,6 +84,7 @@ token_t *get_next_token(tokenizer_t *tokenizer)
             case '%': return move_with_token(tokenizer, init_token("%", TOKEN_MODULO); break;
             case '<': return move_with_token(tokenizer, init_token("<", TOKEN_LESS_THAN); break;
             case '>': return move_with_token(tokenizer, init_token(">", TOKEN_GREATER_THAN); break;
+            default: break;
         }
     }
 }

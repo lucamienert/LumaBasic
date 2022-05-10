@@ -1,9 +1,8 @@
 #include "include/parser.h"
 
-parser_t *
-new_parser(tokenizer_t *tokenizer)
+parser_t *new_parser(tokenizer_t *tokenizer)
 {
-    parser_t *parser = malloc(sizeof(struct PARSER_STRUCT));
+    parser_t *parser = malloc(sizeof(struct Parser));
     parser->tokenizer = tokenizer;
     parser->current_token = get_next_token(tokenizer);
     parser->previous_token = parser->current_token;
@@ -11,19 +10,13 @@ new_parser(tokenizer_t *tokenizer)
     return parser;
 }
 
-void 
-eat(parser_t *parser, int token_type)
+void eat(parser_t *parser, int32_t token_type)
 {
-    if(parser->current_token->type == token_type)
-    {
-        parser->previous_token = parser->current_token;
-        parser->current_token = get_next_token(parser->tokenizer);
-    }
-    else
-    {
-        LOG("Unexpected token");
+    if(parser->current_token->type != token_type)
         exit(1);
-    }
+
+    parser->previous_token = parser->current_token;
+    parser->current_token = get_next_token(parser->tokenizer);
 }
 
 ast_t *

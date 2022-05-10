@@ -3,12 +3,14 @@
 
 #pragma once
 
+#include <stdlib.h>
+#include <stdint.h>
+
 #include "tokenizer.h"
 #include "ast.h"
 #include "scope.h"
-#include "misc.h"
 
-typedef struct PARSER_STRUCT
+typedef struct Parser
 {
     tokenizer_t *tokenizer;
     token_t *current_token;
@@ -18,7 +20,7 @@ typedef struct PARSER_STRUCT
 
 parser_t *new_parser(tokenizer_t *tokenizer);
 
-void eat(parser_t *parser, int token_type);
+void eat(parser_t *parser, int32_t token_type);
 
 ast_t *parse(parser_t *parser, scope_t *scope);
 ast_t *parse_statement(parser_t *parser, scope_t *scope);

@@ -2,7 +2,7 @@
 
 tokenizer_t *init_tokenizer(char *source)
 {
-    tokenizer_t *tokenizer = malloc(sizeof(struct TOKENIZER_STRUCT));
+    tokenizer_t *tokenizer = malloc(sizeof(struct Tokenizer));
     tokenizer->source = source;
     tokenizer->index = 0;
     tokenizer->current = tokenizer->source[tokenizer->index];
@@ -18,7 +18,7 @@ void next_character(tokenizer_t *tokenizer)
     tokenizer->current = tokenizer->source[tokenizer->index];
 }
 
-char peek(tokenizer_t *tokenizer, int offset)
+char peek(tokenizer_t *tokenizer, int32_t offset)
 {
     return tokenizer->source[tokenizer->index + offset];
 }

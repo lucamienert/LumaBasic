@@ -1,7 +1,0 @@
-func main() => int
-{
-    number additioned = 1 + 2;
-    string str = toString(additioned);
-    sysout(str);
-    return 0;
-};

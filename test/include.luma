@@ -1,7 +1,0 @@
-include "functions.luma";
-
-func main() => int
-{
-    myFunction();
-    return 0;
-};

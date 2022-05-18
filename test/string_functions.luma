@@ -1,8 +1,0 @@
-string name = "Luma";
-string reversed = strrev(name);
-
-func main() => int
-{
-	sysout(reversed);
-	return 0;
-};

@@ -1,0 +1,9 @@
+def test(testparam)
+    sysout(testparam)
+end
+
+test("Test from fn")
+
+for i = 0 to 5 then
+    sysout("Test")
+end

@@ -10,46 +10,46 @@ class Tokenizer:
         tokens = []
         self.__pos = 0
         self.__stmt = stmt
-        c = self.__peek()
+        c = self.peek()
 
         while c is not None:
             while c.isspace():
-                c = self.__consume()
+                c = self.consume()
                 if not c.isspace():
-                    self.__rewind()
+                    self.rewind()
                     break
             start_pos = self.__pos + 1
 
             if c == '"':
-                t = self.__lex_string(start_pos)
+                t = self.lex_string(start_pos)
             elif c.isalpha():
-                t = self.__lex_word(start_pos)
+                t = self.lex_word(start_pos)
             elif c.isdigit():
-                t = self.__lex_number(start_pos)
+                t = self.lex_number(start_pos)
             elif c in Types.SYMBOLS:
-                t = self.__lex_symbol(start_pos)
+                t = self.lex_symbol(start_pos)
             else:
                 raise SyntaxError(f"Unknown token starting with '{c}'")
 
             tokens.append(t)
-            c = self.__peek()
+            c = self.peek()
         return tokens
 
-    def __lex_string(self, start_pos):
-        self.__consume()
+    def lex_string(self, start_pos):
+        self.consume()
         lexeme = ''
-        c = self.__consume()
+        c = self.consume()
 
         while c is not None:
             if c == '"':
                 break
             lexeme += c
-            c = self.__consume()
+            c = self.consume()
         return Token((start_pos, self.__pos), Types.TT_STRING, lexeme)
 
-    def __lex_number(self, start_pos):
+    def lex_number(self, start_pos):
         lexeme = ''
-        c = self.__consume()
+        c = self.consume()
         is_float = False
 
         while c is not None:
@@ -57,23 +57,23 @@ class Tokenizer:
                 if c == '.' and not is_float:
                     is_float = True
                 else:
-                    self.__rewind()
+                    self.rewind()
                     break
             lexeme += c
-            c = self.__consume()
+            c = self.consume()
         tt = Types.TT_UFLOAT if is_float else Types.TT_UINT
         return Token((start_pos, self.__pos), tt, lexeme)
 
-    def __lex_word(self, start_pos):
+    def lex_word(self, start_pos):
         lexeme = ''
-        c = self.__consume()
+        c = self.consume()
 
         while c is not None:
             if not (c.isalnum() or c in ['_', '$']):
-                self.__rewind()
+                self.rewind()
                 break
             lexeme += c
-            c = self.__consume()
+            c = self.consume()
 
         if lexeme in Types.KEYWORDS:
             tt = Types.KEYWORDS[lexeme]
@@ -81,25 +81,25 @@ class Tokenizer:
             tt = Types.TT_IDENTIFIER
         return Token((start_pos, self.__pos), tt, lexeme.upper())
 
-    def __lex_symbol(self, start_pos):
-        c = self.__consume()
-        c2 = self.__peek()
+    def lex_symbol(self, start_pos):
+        c = self.consume()
+        c2 = self.peek()
 
         if c is not None and c2 is not None and ((c + c2) in Types.SYMBOLS):
-            lexeme = c + self.__consume()  # two char symbol
+            lexeme = c + self.consume()
         else:
             lexeme = c
         return Token((start_pos, self.__pos), Types.SYMBOLS[lexeme], lexeme)
 
-    def __consume(self):
-        c = self.__peek()
+    def consume(self):
+        c = self.peek()
         self.__pos += 1 if c is not None else 0
         return c
 
-    def __rewind(self):
+    def rewind(self):
         self.__pos -= 1 if self.__pos > 0 else 0
 
-    def __peek(self):
+    def peek(self):
         if self.__pos >= len(self.__stmt):
             return None
         return self.__stmt[self.__pos]

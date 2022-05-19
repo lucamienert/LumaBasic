@@ -108,9 +108,9 @@ class Parser:
         if dim_len != len(indices):
             self.parser_raise(f"Invalid access to array '{var[1:]}'", IndexError)
         self.assert_syntax(Types.SYM_RPAREN)
-        self.consume()                                 # )
+        self.consume()
         self.assert_syntax(Types.SYM_EQ)
-        self.consume()                                 # =
+        self.consume()
 
         self.parse_expr()
         val = self.operation_stack.pop()
@@ -264,10 +264,10 @@ class Parser:
         indices = self.parse_list([Types.SYM_COMMA])
         self.assert_syntax(Types.SYM_RPAREN)
         self.consume()
-        elem = self.__get_arr_elem(self.symbols[var], indices)
+        elem = self.get_array_element(self.symbols[var], indices)
         self.operation_stack.push(elem)
 
-    def __get_arr_elem(self, arr, indices):
+    def get_array_element(self, arr, indices):
         dims = len(indices)
         if dims != len(self.get_array_dimension(arr)):
             self.parser_raise('Array dimension mismatch', RuntimeError)

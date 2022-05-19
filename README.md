@@ -3,6 +3,7 @@
 ## Description
 
 An toy programming language for my operating system.
+Its an dialect of the BASIC Programming language
 
 ## TODO
 

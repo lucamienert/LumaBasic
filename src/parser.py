@@ -455,6 +455,12 @@ class Parser:
             self.parser_raise("Error reading data", RuntimeError)
         return (None, Types.STATE_NORMAL)
 
+    def parse_sub(self):
+        self.consume()
+        var = self.token.lexeme
+        print(var)
+        exit()
+
     def abs(self, val):
         return abs(val)
 
@@ -538,7 +544,8 @@ class Parser:
     PARSE_DICT = {
         Types.KW_DATA: parse_data, 
         Types.KW_DIM: parse_dim,
-        Types.KW_END: parse_end, 
+        Types.KW_END: parse_end,
+        Types.KW_SUB: parse_sub,
         Types.KW_FOR: parse_for,
         Types.KW_GOSUB: parse_gosub, 
         Types.KW_GOTO: parse_goto,

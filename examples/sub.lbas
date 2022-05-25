@@ -1,0 +1,4 @@
+10 REM For Loop Test
+20 SUB Test
+30 SYSOUT "Test"
+40 END SUB

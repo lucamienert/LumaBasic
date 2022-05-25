@@ -1,7 +1,0 @@
-10 REM If Statement Test
-15 LET number = 0
-20 IF number<0 THEN
-30 SYSOUT "Number is negative"
-40 ELSE 
-50 SYSOUT "Number is non-negative"
-60 END

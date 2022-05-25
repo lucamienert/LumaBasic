@@ -1,7 +1,7 @@
 from .interpreter import Interpreter
 
 def main(filename):
-    if filename.endswith('.luma'):
+    if filename.endswith('.lbas'):
         with open(filename, 'r') as file:
             data = file.read().splitlines()
 

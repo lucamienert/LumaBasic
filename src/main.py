@@ -1,26 +1,9 @@
-from interpreter import Interpreter
-from parser import Parser
-from tokenizer import Tokenizer
+from .interpreter import Interpreter
 
-import sys
-
-def main():
-    filename = sys.argv[1]
-    if filename.endswith('.lmath'):
+def main(filename):
+    if filename.endswith('.lbas'):
         with open(filename, 'r') as file:
-            data = file.read()
-
-    tokenizer = Tokenizer(data)
-    tokens = tokenizer.generate_tokens()
-
-    parser = Parser(tokens)
-    ast = parser.parse()
-    if not ast:
-        raise Exception("Not AST!")
+            data = file.read().splitlines()
 
     interpreter = Interpreter()
-    value = interpreter.visit(ast)
-    print(f"[MATH]: {value}")
-
-if __name__ == '__main__':
-    main()
+    interpreter.interpret(data)
